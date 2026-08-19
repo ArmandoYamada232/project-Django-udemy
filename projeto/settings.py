@@ -61,9 +61,13 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'projeto.urls'
 
 TEMPLATES = [
-    {
+    {   #Aqui informa o diretorio onde está o template 
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            #BASE_DIR é usado para direcionar e / a pasta que está e a string nome da pasta
+            #Django da prioridade a arquivos que estão aqui da esquerda para direita
+            BASE_DIR / 'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
