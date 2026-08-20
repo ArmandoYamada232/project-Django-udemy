@@ -2,6 +2,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
+#cliente faz HTTp request
+#servidor return Http response
 
 
 # tem que dar namespace para arquivos de template
@@ -10,11 +12,3 @@ def home(request):#Essa string é o caminho até o html
         'name': 'Armando',
     })
     #Adiciona a pasta e depois o arquivo que está na pasta
-
-def contato(request):
-    return render(request, 'recipes/contato.html')
-
-#cliente faz HTTp request
-def sobre(request):
-    #servidor return Http response
-    return render(request, 'recipes/sobre.html')
