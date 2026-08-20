@@ -12,9 +12,9 @@ def home(request):#Essa string é o caminho até o html
     #Adiciona a pasta e depois o arquivo que está na pasta
 
 def contato(request):
-    return HttpResponse('Essa é a contato.')
+    return render(request, 'recipes/contato.html')
 
 #cliente faz HTTp request
 def sobre(request):
     #servidor return Http response
-    return HttpResponse('Esse é o sobre')
+    return render(request, 'recipes/sobre.html')
