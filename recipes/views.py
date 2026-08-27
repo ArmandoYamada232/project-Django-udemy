@@ -12,3 +12,11 @@ def home(request):#Essa string é o caminho até o html
         'name': 'Armando',
     })
     #Adiciona a pasta e depois o arquivo que está na pasta
+
+
+# tem que dar namespace para arquivos de template
+def recipe(request,dinamico):#Essa string é o caminho até o html
+    return render(request, 'recipes/pages/recipe-view.html', status= 200, context={
+        'name': 'Armando',
+    })
+    #Adiciona a pasta e depois o arquivo que está na pasta

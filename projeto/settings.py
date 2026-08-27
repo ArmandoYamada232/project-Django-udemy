@@ -129,6 +129,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Caminhos para páginas staticas fora do app mas está na pasta raiz project-Django-Udemy
+# base dir é porque tá na pasta raiz ou seja dentro de projetos
+STATICFILES_DIRS = [
+    BASE_DIR / 'base_static',
+]
+
+'''Static root serve para pegar todos os arquivos staticos usando o comando
+py manage.py collectstatic e depois cria uma pasta chamada static com todos os 
+arquivos staticos'''
+STATIC_ROOT = BASE_DIR /'static'
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
