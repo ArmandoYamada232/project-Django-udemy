@@ -66,7 +66,8 @@ TEMPLATES = [
         'DIRS': [
             #BASE_DIR é usado para direcionar e / a pasta que está e a string nome da pasta
             #Django da prioridade a arquivos que estão aqui da esquerda para direita
-            BASE_DIR / 'templates'
+            BASE_DIR / 'templates',
+            BASE_DIR / 'base_templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {

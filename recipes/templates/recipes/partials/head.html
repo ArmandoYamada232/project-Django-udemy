@@ -1,10 +1,6 @@
 {% comment %} Esse comando carrega a pasta static e no link do css usa-se o href para terminar de 
 dizer onde tá a pasta {% endcomment %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -25,6 +21,3 @@ dizer onde tá a pasta {% endcomment %}
 {% comment %} Para deixar o css em modo estatico no href coloca o caminho da pasta static onde está
     o css {% endcomment %}
     <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
-    
-    <title>Recipes</title>
-</head>
