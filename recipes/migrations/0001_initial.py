@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
+    #Gera automaticamente os campos de ID como primaryKey
     operations = [
         migrations.CreateModel(
             name='Category',
