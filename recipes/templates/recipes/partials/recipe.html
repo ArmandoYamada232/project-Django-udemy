@@ -1,50 +1,51 @@
-            <div class="recipe recipe-item-list">
-                <div class="recipe-cover">
-                    <img src="https://placehold.co/1280x720" alt="imagem1">
-                </div>
-                <div class="recipe-tittle-container">
-                    <h2 class="recipe-tittle">
-                        Lorem ipsum dolor sit amet.
-                    </h2>
-                </div>
-                <div class="recipe-author">
-                    <span class="recipe-author-item">
-                        <i class="fas fa-user"></i>
-                        Armando Isamu de Almeida Yamada
-                    </span>
-                    <span class="recipe-author-item">
-                        <i class="fas fa-calendar-alt"></i>
-                        24/08/2026 às 13:38
-                    </span>
-                    <span class="recipe-author-item">
-                        <a href="/recipes/category/cafe-da-manha/">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Café da manhã</span>
-                        </a>
-                    </span>
-                </div>
-                <div class="recipe-content">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum, voluptate!</p>
-                </div>
+<div class="recipe recipe-item-list">
+    <div class="recipe-cover">
+        <img src="{{recipe.cover.url}}" alt="imagem1">
+    </div>
+    <div class="recipe-tittle-container">
+        <h2 class="recipe-tittle">
+            {{recipe.title}}
+        </h2>
+    </div>
+    <div class="recipe-author">
+        <span class="recipe-author-item">
+            <i class="fas fa-user"></i>
+            {{recipe.author.first_name}} {{recipe.author.last_name}}
+        </span>
+        <span class="recipe-author-item">
+            <i class="fas fa-calendar-alt"></i>
+            {{ recipe.created_at|date:"d/m/Y" }} às {{ recipe.created_at|date:"H:i" }}
+        </span>
+        </span>
+        <span class="recipe-author-item">
+            <a href="/recipes/category/cafe-da-manha/">
+                <i class="fas fa-layer-group"></i>
+                <span>{{recipe.category.name}}</span>
+            </a>
+        </span>
+    </div>
+    <div class="recipe-content">
+        <p>{{recipe.description}}</p>
+    </div>
 
-                <div class="recipe-meta-container">
-                    <div class="recipe-meta-recipe-preparation">
-                        <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i> Preparo</h3>
-                        <div class="recipe-meta-text">
-                            0 minutos.
-                        </div>
-                    </div>
-                    <div class="recipe-meta recipe-servings">
-                        <h3 class="recipe-meta-title"><i class="fas fa-pizza-slice"></i> Porções</h3>
-                        <div class="recipe-meta-text">
-                            0 Porções
-                        </div>
-                    </div>
-                </div>
-                <footer class="recipe-footer">
-                    <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
-                        <i class="fas fa-eye"></i>
-                        <span>ver mais...</span>
-                    </a>
-                </footer>
+    <div class="recipe-meta-container">
+        <div class="recipe-meta-recipe-preparation">
+            <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i> Preparo</h3>
+            <div class="recipe-meta-text">
+                {{recipe.preparation_time}} {{recipe.preparation_time_unit}}
             </div>
+        </div>
+        <div class="recipe-meta recipe-servings">
+            <h3 class="recipe-meta-title"><i class="fas fa-pizza-slice"></i> Porções</h3>
+            <div class="recipe-meta-text">
+                {{recipe.servings}} {{recipe.servings_unit}}
+            </div>
+        </div>
+    </div>
+    <footer class="recipe-footer">
+        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
+            <i class="fas fa-eye"></i>
+            <span>ver mais...</span>
+        </a>
+    </footer>
+</div>
