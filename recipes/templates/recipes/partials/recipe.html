@@ -1,10 +1,14 @@
 <div class="recipe recipe-item-list">
     <div class="recipe-cover">
-        <img src="{{recipe.cover.url}}" alt="imagem1">
+        <a href="{% url 'recipes:recipe' recipe.id %}">
+            <img src="{{recipe.cover.url}}" alt="imagem1">
+        </a>
     </div>
     <div class="recipe-tittle-container">
         <h2 class="recipe-tittle">
-            {{recipe.title}}
+            <a href="{% url 'recipes:recipe' recipe.id %}">
+                {{recipe.title}}
+            <a/>
         </h2>
     </div>
     <div class="recipe-author">
@@ -42,10 +46,19 @@
             </div>
         </div>
     </div>
+
+    {% if isdetail_page is not True%}
     <footer class="recipe-footer">
-        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
+        <a class="recipe-read-more button button-dark button-full-width" href="{ % url 'recipes:recipe' recipe.id% }">
             <i class="fas fa-eye"></i>
             <span>ver mais...</span>
         </a>
     </footer>
+    {% endif %}
+
+    {% if isdetail_page is True%}
+    <div class="preparation-steps">
+        {{recipe.preparation_steps|linebreaksbr}}
+    </div>
+    {% endif %}
 </div>

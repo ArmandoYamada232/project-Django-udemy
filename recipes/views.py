@@ -19,5 +19,6 @@ def home(request):#Essa string é o caminho até o html
 def recipe(request,dinamico):#Essa string é o caminho até o html
     return render(request, 'recipes/pages/recipe-view.html', status= 200, context={
         'recipe': make_recipe(),
+        'isdetail_page': True,
     })
     #Adiciona a pasta e depois o arquivo que está na pasta
