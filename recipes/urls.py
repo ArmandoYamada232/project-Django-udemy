@@ -17,5 +17,6 @@ urlpatterns = [
     #int:
     # para dar um nome único para a url dinamica utiliza-se o name
     # esse name são nome correto e único das urls
+    path('recipes/category/<int:category_id>/', views.category, name = 'category'),
     path('recipes/<int:dinamico>/', views.recipe, name = 'recipe'),
 ]

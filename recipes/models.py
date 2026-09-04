@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=65)
+    #isso é para identificar no painel admin
+    def __str__(self):
+        return self.name
 
 #realção de que uma categoria tenha várias receitas 1:N (1 categoria para muitas receitas)
 
@@ -31,15 +34,18 @@ class Recipe(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
     #image field campo para imagens na pasta recipes/covers com data
-    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/')
+    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/', blank=True, default= '')
     #relações
     #ForeignKey serve como uma chave para ligar para a outra tabela a se relacionar
     '''on_delete quando apagar a categoria e não ter inconsistência
     a categoria que for apagada e tiver na receita vai ser default nulo'''
-    Category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True,
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True , blank=True, default= '',
     )
     Author = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True,
     )
+    
+    def __str__(self):
+        return self.title
 

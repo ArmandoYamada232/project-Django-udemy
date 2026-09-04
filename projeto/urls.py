@@ -1,9 +1,6 @@
 """
-
 Porta de entrada para o site
-
 """
-
 
 """
 URL configuration for projeto project.
@@ -23,13 +20,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+#serve para importar alguma coisa do arquivo settings
+from django.conf.urls.static import static
+from django.conf import settings
 #caminho('rota/', função)
 
 #Função include serve para incluir as urls dos app criados e importa ela junto com path
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('recipes.urls')), # /
+    path('', include('recipes.urls')),
 ]
+urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+#urlpatterns += static(settings.STATIC_URL,document_root = settings.MEDIA_ROOT)
 
 #exemplo
 #path('recipes/', include('recipes.urls')) #cria um subdominio chamado recipes

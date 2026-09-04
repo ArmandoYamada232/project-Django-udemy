@@ -141,6 +141,9 @@ py manage.py collectstatic e depois cria uma pasta chamada static com todos os
 arquivos staticos'''
 STATIC_ROOT = BASE_DIR /'static'
 
+MEDIA_URL = '/media/'
+#PASTA ONDE VAI SALVAR AS IMAGENS
+MEDIA_ROOT = BASE_DIR / 'media'
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
