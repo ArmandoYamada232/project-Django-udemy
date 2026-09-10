@@ -17,22 +17,28 @@ from django.http import Http404
 def home(request):#Essa string é o caminho até o html
     #usa objects.all para buscar todas as receitas
     recipes = Recipe.objects.filter(
-        is_published = True).order_by('-id')
+            is_published = True,
+        ).order_by('-id')
+    
     return render(request, 'recipes/pages/home.html', status= 200, context={
-        # uma lista que gera 10 receitas com o make que cria coisas fake
         'recipes': recipes,
     })
     #Adiciona a pasta e depois o arquivo que está na pasta
 
-def recipe(request,id):
+def recipe(request,id):  
+    recipe = get_object_or_404(
+        Recipe, id = id, is_published = True,
+    ) 
     return render(request, 'recipes/pages/recipe-view.html', status= 200, context={
-        'recipe': make_recipe(),
-        'isdetail_page': True,
+        'recipe': recipe,
+        'isdetail_page':True,
     })
+
 
     
 def category(request,category_id):
-    recipes = get_list_or_404(Recipe.objects.filter(
+    recipes = get_list_or_404(
+        Recipe.objects.filter(
         category__id = category_id, is_published = True,
         ).order_by('-id')
     )
