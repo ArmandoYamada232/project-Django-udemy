@@ -9,14 +9,16 @@ from . import views
 #quando for importar usar o namespace do modulo (views.função)
 
 # usa-se recipes:recipe
+
+#declara antes do id o formato que eu quero e dentro do maior e menor, slug, int, string entre outros
+#int:
+# para dar um nome único para a url dinamica utiliza-se o name
+# esse name são nome correto e único das urls
+
 app_name = 'recipes'
 
 urlpatterns = [
     path('',views.home, name='home'),
-    #declara antes do id o formato que eu quero e dentro do maior e menor, slug, int, string entre outros
-    #int:
-    # para dar um nome único para a url dinamica utiliza-se o name
-    # esse name são nome correto e único das urls
     path('recipes/category/<int:category_id>/', views.category, name = 'category'),
     path('recipes/<int:id>/', views.recipe, name = 'recipe'),
 ]
