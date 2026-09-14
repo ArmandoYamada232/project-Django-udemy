@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse, resolve
-from django import views
+from recipes import views
 
 class RecipeViewsTest(TestCase):
     def teste_recipe_home_view_function_is_correct(self):
