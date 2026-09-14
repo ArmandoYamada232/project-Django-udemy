@@ -1,0 +1,7 @@
+Configuração para que o Pytest e PytestDjango saiba onde que tá a settings do projeto
+Onde o pytest vai tentar encontrar os testes
+test_*.py tests_*.py *_test.py é pq pode tá em modulos
+Permite passar configurações para o pytest
+--doctest-modules ativa o pytest para ler doctest
+--strict-markers Marca o teste com uma categoria ex: teste lento 
+e aceita só as marcas definidas agora em markers'''
