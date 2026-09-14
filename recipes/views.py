@@ -12,7 +12,7 @@ from django.http import Http404
 # cliente faz HTTp request
 # servidor return Http response
 
-
+# Utilizando functional based views
 # tem que dar namespace para arquivos de template
 def home(request):#Essa string é o caminho até o html
     #usa objects.all para buscar todas as receitas
@@ -33,7 +33,6 @@ def recipe(request,id):
         'recipe': recipe,
         'isdetail_page':True,
     })
-
 
     
 def category(request,category_id):

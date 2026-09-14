@@ -1,6 +1,9 @@
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
+from recipes import views
 # Reverse serve para analisar a url de dentro para fora e testar
+# Resolve resolve qual função está sendo utilizada pela url
+
 # Create your tests here.
 # Nome do teste tem que ser muito descritivo
 # Todo metodo dessa classe que começa com teste_ é considerado um test
@@ -23,3 +26,19 @@ class RecipeURLsTest(TestCase):
     def test_recipe_detail_urls_is_correct(self):
         url = reverse('recipes:recipe', kwargs={'id': 1})
         self.assertEqual(url, '/recipes/1/')
+  
+# Esse assertsIs verifica a identidade 
+# Assim é não dinânico view = resolve('/')
+# assim é dinâmico view = resolve(reverse('recipes:home'))    
+class RecipeViewsTest(TestCase):
+    def teste_recipe_home_view_function_is_correct(self):
+        view = resolve(reverse('recipes:home'))
+        self.assertIs(view.func, views.home)
+    
+    def teste_recipe_category_view_function_is_correct(self):
+        view = resolve(reverse('recipes:category', kwargs={'category_id': 1}))
+        self.assertIs(view.func, views.category)
+        
+    def teste_recipe_detail_view_function_is_correct(self):
+        view = resolve(reverse('recipes:recipe', kwargs={'id': 1}))
+        self.assertIs(view.func, views.recipe)    
