@@ -35,7 +35,7 @@ class RecipeViewsTest(TestCase):
     def test_recipe_home_template_loads_recipes(self):
         category = Category.objects.create(name= 'Category')
         author = User.objects.create_user(
-            first_name = 'Tatu',
+            first_name = 'tatu',
             last_name = 'canastra',
             username= 'tatucanastra',
             password='123',
@@ -55,7 +55,11 @@ class RecipeViewsTest(TestCase):
             preparation_steps_is_html = False,
             is_published = True,
         )
-        self.assertEqual(1 ,1)
+        response = self.client.get(reverse('recipes:home'))
+        content = response.content.decode('utf-8')
+        self.assertIn('Recipe title', content)
+        self.assertIn('10 min', content)
+        ...
     
     def teste_recipe_category_view_function_is_correct(self):
         view = resolve(
