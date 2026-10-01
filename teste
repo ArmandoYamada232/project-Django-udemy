@@ -1,0 +1,8 @@
+#def test_recipe_home_template_show_no_recipes_if_no_recipe(self):
+#    Recipe.objects.get(id = 1).delete()
+#    response = self.client.get(
+#        reverse('recipes:home'))
+#    self.assertIn(
+#        'No recipes found',
+#        response.content.decode('utf-8')            
+#    )
