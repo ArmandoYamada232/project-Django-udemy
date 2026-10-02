@@ -1,6 +1,6 @@
 from django.urls import reverse, resolve
 from recipes import views
-from .teste_recipe_base import RecipeTestBase
+from .test_recipe_base import RecipeTestBase
 from unittest import skip
 
 # para skippar test usa-se: from unittest import skip
