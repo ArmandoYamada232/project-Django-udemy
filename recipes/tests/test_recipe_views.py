@@ -9,6 +9,9 @@ from unittest import skip
 # setup é responsável por ser executado antes dos testes e o teardown
 # depois do teste cada um teste vai ter o setup e teardown
 
+#tenho que escrever mais algumas coisas sobre o teste
+#self.fail('Para que eu termine de digitá-lo')
+
 class RecipeViewsTest(RecipeTestBase):
     #setup
     def teste_recipe_home_view_function_is_correct(self):
@@ -58,13 +61,25 @@ class RecipeViewsTest(RecipeTestBase):
     
     def test_recipe_category_template_loads_recipes_a(self):
             
-            needed_Title = 'this is a category test'
-            self.make_recipe(title= needed_Title)
+        needed_Title = 'this is a category test'
+        self.make_recipe(title= needed_Title)
 
-            response = self.client.get(reverse('recipes:category', args= (1,)))
-            content = response.content.decode('utf-8')
+        response = self.client.get(reverse('recipes:category', args= (1,)))
+        content = response.content.decode('utf-8')
             
-            self.assertIn(needed_Title, content)
+        self.assertIn(needed_Title, content)
+
+
+    def test_recipe_home_template_do_not_loads_recipe_is_published(self):
+            
+        self.make_recipe(is_published=False)
+
+        response = self.client.get(reverse('recipes:home'))
+
+        # Se modificar o h1 lá vai quebrar dois testes
+        self.assertIn(
+            '<h1> No recipes found </h1>', response.content.decode('utf-8')
+        )
 
     def teste_recipe_category_view_function_is_correct(self):
         view = resolve(
@@ -76,7 +91,16 @@ class RecipeViewsTest(RecipeTestBase):
             reverse('recipes:category', kwargs={'category_id': 100000}))
         self.assertEqual(response.status_code, 404)
     
-        
+
+    def test_recipe_category_template_do_not_loads_recipe_is_published(self):
+                
+        recipe = self.make_recipe(is_published=False)
+    
+        response = self.client.get(
+            reverse('recipes:recipe', kwargs={'id': recipe.category.id})
+        )
+        self.assertEqual(response.status_code, 404)
+
     def teste_recipe_detail_view_function_is_correct(self):
         view = resolve(
             reverse('recipes:recipe', kwargs={'id': 1}))
@@ -94,7 +118,6 @@ class RecipeViewsTest(RecipeTestBase):
     
         response = self.client.get(reverse('recipes:home'))
 
-
     def test_recipe_detail_template_loads_the_correct_recipes_a(self):
         needed_Title = 'this is a detail page - load one recipe'
 
@@ -108,3 +131,13 @@ class RecipeViewsTest(RecipeTestBase):
         #Sempre usar Utf-8
             
         self.assertIn(needed_Title, content)
+
+
+    def test_recipe_detail_template_do_not_loads_recipe_is_published(self):
+                    
+        recipe = self.make_recipe(is_published=False)
+        
+        response = self.client.get(
+            reverse('recipes:recipe', kwargs={'id': recipe.category.id})
+        )
+        self.assertEqual(response.status_code, 404)
