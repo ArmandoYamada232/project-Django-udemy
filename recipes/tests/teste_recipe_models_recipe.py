@@ -2,5 +2,12 @@ from . teste_recipe_base import RecipeTestBase
 
 # Não se testa coisas do Django mas a lógica deve-se testar
 
-class Recipe_model_teste(RecipeTestBase):
-    pass
+class RecipeModelTest(RecipeTestBase):
+    def setUp(self):
+        self.recipe = self.make_recipe()
+        return super().setUp()
+
+
+    def test_the_test(self):
+        recipe = self.recipe
+        ...
